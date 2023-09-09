@@ -30,7 +30,7 @@ This is a simple React application built to demonstrate a user registration form
    yarn install
    ```
 
-3. Add your Firebase configuration in a `.env` file.
+3. Add your Firebase configuration in a `firebase.js` file.
 
 4. Start the development server:
 
