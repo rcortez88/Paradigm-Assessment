@@ -20,7 +20,7 @@ This is a simple React application built to demonstrate a user registration form
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/<Your-GitHub-Username>/user-registration-app.git
+   git clone https://github.com/<Your-GitHub-Username>/Paradigm-Assessment
    ```
 
 2. Navigate to the project folder and install dependencies:
