@@ -19,3 +19,12 @@ export const ERROR_TYPES = {
 };
 
 export const DB_PATCH = "users/";
+
+export const mapErrorToMessage = (error) => {
+  switch (error.code) {
+    case "auth/email-already-in-use":
+      return "This email is already in use.";
+    default:
+      return "An unexpected error occurred. Please try again.";
+  }
+};

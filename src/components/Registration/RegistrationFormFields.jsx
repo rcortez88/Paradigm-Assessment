@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { TextField, Button, Typography } from "@mui/material";
 import { getDatabase, ref, set, get } from "firebase/database";
-import { VALIDATION_ERRORS, ERROR_TYPES, DB_PATCH } from "../../constants";
+import {
+  VALIDATION_ERRORS,
+  ERROR_TYPES,
+  DB_PATCH,
+  mapErrorToMessage,
+} from "../../constants";
 import bcrypt from "bcryptjs";
 
 const RegistrationFormFields = ({ onSuccess, setError }) => {
@@ -32,6 +37,7 @@ const RegistrationFormFields = ({ onSuccess, setError }) => {
   };
 
   const validateForm = async () => {
+    console.log("HI");
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
     if (!emailPattern.test(email)) {
@@ -95,8 +101,9 @@ const RegistrationFormFields = ({ onSuccess, setError }) => {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
+      setError(null);
     } catch (error) {
-      setError("Error registering user: " + error.message);
+      setError(mapErrorToMessage(error));
     } finally {
       setLoading(false);
     }
@@ -114,7 +121,7 @@ const RegistrationFormFields = ({ onSuccess, setError }) => {
       return;
     }
 
-    registerUser();
+    await registerUser();
   };
 
   return (
